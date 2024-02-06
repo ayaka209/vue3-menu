@@ -1,13 +1,13 @@
 <template>
-    <div class="menubar" :style="menuStyle.menubar" @mousedown.prevent="mousedown">
+    <div class="menubar" :style="menuStyle?.menubar" @mousedown.prevent="mousedown">
         <slot/>
     </div>
 </template>
 
 
 <script lang="ts">
-import { MenubarType } from "./script"
-export default MenubarType
+import { Menubar } from "./script"
+export default Menubar
 </script>
 
 

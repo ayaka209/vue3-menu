@@ -1,5 +1,5 @@
 import { ref, defineComponent, h } from 'vue';
-import { Menuitem } from "../../components";
+import { MenuItem } from "../../components";
 
 class Entry {
     constructor(readonly label: string) {}

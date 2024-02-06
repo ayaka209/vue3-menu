@@ -17,7 +17,7 @@ export const StyleFactory = (menuStyle: MenuStyle) => {
     return defineComponent({
         setup() {
             // for backward compatibility
-            if (menuStyle.animation == undefined) {
+            if (menuStyle && menuStyle?.animation == undefined) {
                 menuStyle.animation = true
             }
             return { [MENU_STYLE_KEY]: menuStyle }

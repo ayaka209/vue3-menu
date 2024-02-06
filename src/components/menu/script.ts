@@ -31,7 +31,7 @@ export class MenuType extends Vue {
 
     close(fade: boolean, parent = false) {
         if (this.isOpen) {
-            this.fade = (fade && this.menuStyle.animation) ? 'fade' : 'none'
+            this.fade = (fade && this.menuStyle?.animation) ? 'fade' : 'none'
             this.isOpen = false
             fade || (this.menuElement().style.display = 'none') // vue synchronizes dom to vdom at several millisecond intervals
             this.$emit(MenuCloseEvent.type, new MenuCloseEvent(parent))
@@ -81,7 +81,7 @@ export class MenuType extends Vue {
     }
 
     get style() {
-        return { ...this.menuStyle.menu, padding: `${PADDING}px 0` }
+        return { ...this.menuStyle?.menu, padding: `${PADDING}px 0` }
     }
 }
 

@@ -30,11 +30,11 @@ export class MenubaritemType extends Vue {
     private isOpen = false
 
     mounted() {
-        this.menu().$on(MenuCloseEvent.type, (e: MenuCloseEvent) => {
+      /*  this.menu()?.$on(MenuCloseEvent.type, (e: MenuCloseEvent) => {
             this.isOpen = false
             e.fromChild && this.menubar.deactivate()
         })
-        this.menubar.$on(MenubaritemActivateEvent.type, (e: MenubaritemActivateEvent) => {
+        this.menubar?.$on(MenubaritemActivateEvent.type, (e: MenubaritemActivateEvent) => {
             if (this != e.menubaritem) {
                 const menu = this.menu()
                 menu && menu.close(false)
@@ -43,7 +43,7 @@ export class MenubaritemType extends Vue {
         this.menubar.$on(MenubarDactivateEvent.type, (e: MenubarDactivateEvent) => {
             const menu = this.menu()
             menu && menu.close(true)
-        })
+        })*/
     }
 
     onMenuiatemFired() {
@@ -53,7 +53,7 @@ export class MenubaritemType extends Vue {
     }
 
     get style() {
-        return this.active ? this.menuStyle.active : {}
+        return this.active ? this.menuStyle?.active : {}
     }
 
     get paddingTop() {

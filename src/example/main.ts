@@ -22,6 +22,7 @@ const Sample: any = ({
     Sample8,
 } as any)[location.search.substr(1)] || Sample1
 let app = createApp(Sample);
-app.mount("#app");
 app.use(hscMenu)
+app.mount("#app");
+
 export default app

@@ -68,7 +68,7 @@ export class MenuitemType extends Vue {
     }
 
     get style() {
-        const { active, disabled } = this.menuStyle
+        const { active, disabled } = this.menuStyle ?? {};
         return { ...(this.active ? active : {}), ...(this.disabled ? disabled : {}) }
     }
 
@@ -85,10 +85,10 @@ export class MenuitemType extends Vue {
     }
 
     mounted() {
-        this.parentMenu.$on(MenuitemActivateEvent.type, (e: MenuitemActivateEvent) => {
+        this.parentMenu?.$on(MenuitemActivateEvent.type, (e: MenuitemActivateEvent) => {
             e.menuitem != this && this.deactivate()
         })
-        this.parentMenu.$on(MenuCloseEvent.type, (e: MenuCloseEvent) => {
+        this.parentMenu?.$on(MenuCloseEvent.type, (e: MenuCloseEvent) => {
             this.hover = false
             const childMenu = this.childMenu()
             childMenu && childMenu.close(true)
@@ -142,7 +142,7 @@ export class MenuitemType extends Vue {
     }
 
     private async flash() {
-        if (this.menuStyle.animation) {
+        if (this.menuStyle?.animation) {
             const d = 50
             for (let i = 0; i < 3; ++i) {
                 this.hover = false

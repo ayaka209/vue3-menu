@@ -1,5 +1,5 @@
 <template>
-    <div class="separator" :style="menuStyle.separator">
+    <div class="separator" :style="menuStyle?.separator">
     </div>
 </template>
 

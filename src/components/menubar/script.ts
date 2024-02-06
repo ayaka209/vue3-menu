@@ -58,3 +58,4 @@ export class MenubarType extends Vue {
     @Prop({ default: 0 })
     paddingTop!: number
 }
+export var Menubar = MenubarType;
