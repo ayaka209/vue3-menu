@@ -1,7 +1,6 @@
 {
-  "name": "vue3-menu",
+  "name": "@ayaka209/vue3-menu",
   "version": "0.0.1",
-  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,6 +10,14 @@
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
+  },
+  "main": "./dist/vue3Menu.umd.cjs",
+  "module": "./dist/vue3Menu.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue3Menu.js",
+      "require": "./dist/vue3Menu.umd.cjs"
+    }
   },
   "dependencies": {
     "@hscmap/keybind": "^0.2.0",

@@ -57,13 +57,13 @@ export {
     MenubarType,
     MenuType,
     MenuitemType,
-    MenuStyle,
+
     StyleFactory,
     StyleBlack,
     StyleWhite,
     StyleMetal,
 }
-
+export type {MenuStyle};
 export {
     install,
 };
