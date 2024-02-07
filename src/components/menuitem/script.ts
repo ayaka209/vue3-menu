@@ -8,6 +8,7 @@ import { MenuType, PADDING, PARENT_MENU_KEY } from "../menu/script";
 import { MenubaritemType, MENUBARITEM_KEY } from "../menubaritem/script";
 import {  MENU_STYLE_KEY } from "../style"
 import type { MenuStyle } from '../style'
+import {EventVue} from "@/components/eventClass";
 
 
 @Component({
@@ -16,14 +17,14 @@ import type { MenuStyle } from '../style'
         prop: 'vModel',
     }
 })
-export class MenuitemType extends Vue {
-    @Inject(PARENT_MENU_KEY)
+export class MenuitemType extends EventVue {
+    @Inject({from:PARENT_MENU_KEY})
     parentMenu!: MenuType
 
-    @Inject(MENU_STYLE_KEY)
+    @Inject({from:MENU_STYLE_KEY})
     menuStyle!: MenuStyle
 
-    @Inject(MENUBARITEM_KEY)
+    @Inject({from:MENUBARITEM_KEY})
     menubaritem?: MenubaritemType
 
     @Prop({ type: String, default: "" })
@@ -103,7 +104,7 @@ export class MenuitemType extends Vue {
     }
 
     private activate() {
-        this.parentMenu.$emit(MenuitemActivateEvent.type, new MenuitemActivateEvent(this))
+        this.parentMenu.$emitLegacy(MenuitemActivateEvent.type, new MenuitemActivateEvent(this))
         const childMenu = this.childMenu()
         if (childMenu) {
             const rect = this.$el.getBoundingClientRect()
@@ -118,9 +119,9 @@ export class MenuitemType extends Vue {
     }
 
     fire() {
-        this.$emit('click')
+        this.$emitLegacy('click')
         if (this.type == 'radio') {
-            this.$emit('input', this.value)
+            this.$emitLegacy('input', this.value)
         }
         else if (this.type == 'checkbox' && this.vModel !== undefined) {
             if (Array.isArray(this.vModel)) {
@@ -132,10 +133,10 @@ export class MenuitemType extends Vue {
                 else {
                     copy.push(this.value)
                 }
-                this.$emit('input', copy)
+                this.$emitLegacy('input', copy)
             }
             else {
-                this.$emit('input', !this.vModel)
+                this.$emitLegacy('input', !this.vModel)
             }
         }
         this.menubaritem && this.menubaritem.onMenuiatemFired()

@@ -1,4 +1,4 @@
-import { defineComponent, ref } from 'vue'
+import {defineComponent, provide, ref} from 'vue'
 
 export type Style = Partial<CSSStyleDeclaration>
 
@@ -16,11 +16,7 @@ export const MENU_STYLE_KEY = '@hscmap/vue-menu/menuStyle'
 export const StyleFactory = (menuStyle: MenuStyle) => {
     return defineComponent({
         setup() {
-            // for backward compatibility
-            if (menuStyle && menuStyle?.animation == undefined) {
-                menuStyle.animation = true
-            }
-            return { [MENU_STYLE_KEY]: menuStyle }
+            provide(MENU_STYLE_KEY, menuStyle);
         },
         render() {
             return this.$slots.default ? this.$slots.default() : null

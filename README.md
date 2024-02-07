@@ -1,6 +1,10 @@
 # vue-menu
 
-😣 This library is not compatible with Vue3! 😣
+This project is forked from [vue-window](https://github.com/michitaro/vue-window)
+The modifications made to this project compared to the original one mainly focus on compatibility with Vue 3.
+
+
+Here is the README of the original project:
 
 ## Introduction
 

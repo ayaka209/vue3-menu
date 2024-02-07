@@ -5,6 +5,7 @@
 
 <script lang="ts">
 import { MENU_STYLE_KEY } from "./style";
+
 export default {
     inject: { menuStyle: MENU_STYLE_KEY }
 }

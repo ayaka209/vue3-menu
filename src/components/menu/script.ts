@@ -3,6 +3,7 @@ import { Vue, Component, Prop, Inject } from "vue-facing-decorator"
 import { MenuCloseEvent } from "../event"
 import {  MENU_STYLE_KEY } from "../style"
 import type { MenuStyle } from '../style'
+import {EventVue} from "@/components/eventClass";
 
 
 export const PARENT_MENU_KEY = '@hscmap/vue-menu/parentMenu'
@@ -13,7 +14,7 @@ export type Direction = 'left' | 'right'
 @Component({
     provide() { return { [PARENT_MENU_KEY]: this } }
 })
-export class MenuType extends Vue {
+export class MenuType extends EventVue {
     @Prop()
     parentMenuitem?: MenuitemType
 
@@ -34,7 +35,7 @@ export class MenuType extends Vue {
             this.fade = (fade && this.menuStyle?.animation) ? 'fade' : 'none'
             this.isOpen = false
             fade || (this.menuElement().style.display = 'none') // vue synchronizes dom to vdom at several millisecond intervals
-            this.$emit(MenuCloseEvent.type, new MenuCloseEvent(parent))
+            this.$emitLegacy(MenuCloseEvent.type, new MenuCloseEvent(parent))
         }
         if (parent && this.parentMenuitem) {
             this.parentMenuitem.parentMenu.close(fade, true)

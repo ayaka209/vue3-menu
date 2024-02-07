@@ -79,7 +79,7 @@ export class RootlessMenu extends Vue {
 
     mounted() {
         this.$watch(() => this.menu().isOpen, isOpen => {
-            this.$emit(isOpen ? 'open' : 'close')
+            this.$emitLegacy(isOpen ? 'open' : 'close')
         })
     }
 }

@@ -15,7 +15,7 @@ export class Keybinder extends Vue {
 
     created() {
         this.off = keybind.on(this.source, (e:any) => {
-            this.enabled && this.$emit('keybindmatch')
+            this.enabled && this.$emitLegacy('keybindmatch')
         })
     }
 

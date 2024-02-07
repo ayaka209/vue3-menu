@@ -1,6 +1,6 @@
 {
   "name": "vue3-menu",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@hscmap/keybind": "^0.2.0",
+    "mitt": "^3.0.1",
     "vue": "^3.4.15",
     "vue-facing-decorator": "^3.0.4"
   },

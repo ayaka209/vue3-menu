@@ -2,6 +2,7 @@ import { Vue, Component, Prop, Provide, Inject } from "vue-facing-decorator"
 import { MenubarDactivateEvent, once } from '../event'
 import {  MENU_STYLE_KEY } from "../style"
 import type { MenuStyle } from '../style'
+import {EventVue} from "@/components/eventClass";
 
 
 
@@ -13,7 +14,7 @@ export const MENUBAR_KEY = '@hscmap/vue-menu/menubar'
         return { [MENUBAR_KEY]: this }
     }
 })
-export class MenubarType extends Vue {
+export class MenubarType extends EventVue {
     @Inject({from:MENU_STYLE_KEY})
     menuStyle!: MenuStyle
 
@@ -21,7 +22,7 @@ export class MenubarType extends Vue {
 
     deactivate() {
         this.active = false
-        this.$emit(MenubarDactivateEvent.type, new MenubarDactivateEvent())
+        this.$emitLegacy(MenubarDactivateEvent.type, new MenubarDactivateEvent())
         this.clearCancellers()
     }
 

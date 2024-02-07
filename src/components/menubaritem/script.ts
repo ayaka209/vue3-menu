@@ -6,6 +6,7 @@ import { sync } from "../global"
 import { MenubaritemActivateEvent, MenuCloseEvent, MenubarDactivateEvent } from "../event"
 import {  MENU_STYLE_KEY } from "../style"
 import type { MenuStyle } from '../style'
+import {EventVue} from "@/components/eventClass";
 
 export const MENUBAR_KEY = '@hscmap/vue-menu/menubar'
 
@@ -16,7 +17,7 @@ export const MENUBARITEM_KEY = '@hscmap/vue-menu/menubaritem'
     components: { XMenu: Menu },
     provide() { return { [MENUBARITEM_KEY]: this } }
 })
-export class MenubaritemType extends Vue {
+export class MenubaritemType extends EventVue {
     @Prop({ type: String, required: true })
     private label!: string
 
@@ -30,7 +31,7 @@ export class MenubaritemType extends Vue {
     private isOpen = false
 
     mounted() {
-      /*  this.menu()?.$on(MenuCloseEvent.type, (e: MenuCloseEvent) => {
+        this.menu()?.$on(MenuCloseEvent.type, (e: MenuCloseEvent) => {
             this.isOpen = false
             e.fromChild && this.menubar.deactivate()
         })
@@ -43,7 +44,7 @@ export class MenubaritemType extends Vue {
         this.menubar.$on(MenubarDactivateEvent.type, (e: MenubarDactivateEvent) => {
             const menu = this.menu()
             menu && menu.close(true)
-        })*/
+        })
     }
 
     onMenuiatemFired() {
@@ -67,7 +68,7 @@ export class MenubaritemType extends Vue {
     private activate() {
         const rect = this.$el.getBoundingClientRect()
         this.menu().open(rect.left, rect.bottom)
-        this.menubar.$emit(MenubaritemActivateEvent.type, new MenubaritemActivateEvent(this))
+        this.menubar.$emitLegacy(MenubaritemActivateEvent.type, new MenubaritemActivateEvent(this))
         this.isOpen = true
     }
 

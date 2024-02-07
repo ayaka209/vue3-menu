@@ -21,6 +21,9 @@ const components:any = {
     Menu,
     MenuItem,
     Separator,
+    StyleBlack,
+    StyleWhite,
+    StyleMetal,
 }
 
 const install = (app: any, options = { prefix: 'hsc-menu' }) => {
